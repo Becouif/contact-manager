@@ -101,6 +101,18 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return Contact::find($id);
+    }
+
+    // functionality for search 
+    public function search(Request $request){
+        $validated = $request->validate([
+            'search' =>'required'
+        ]);
+        $userId = Auth::id();
+
+        $contacts = Contact::where('user_id',$userId)->where('name','like','%'.$validated['search'].'%')->get();
+
+        return view('contact.search',compact('contacts'));
     }
 }

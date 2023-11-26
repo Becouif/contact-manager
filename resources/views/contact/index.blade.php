@@ -9,7 +9,7 @@
     @endif
   </div>
 
-  <table id="datatable" class="table">
+  <table id="myTable" class="table">
   <thead>
     <tr>
       <th scope="col" onclick="sortTable(0)">#</th>
@@ -28,7 +28,7 @@
       <td>{{ $contact->name }}</td>
       <td>{{ $contact->number }}</td>
       <td><a href="{{route('contact.edit',[$contact->id])}}" class="btn btn-secondary">edit</a></td>
-      <td><form action="" method="post">
+      <td><form action="{{route('contact.delete',[$contact->id])}}" method="post">
         <button type="submit" class="btn btn-danger">delete</button>
       </form></td>
     </tr>

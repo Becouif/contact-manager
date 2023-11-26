@@ -35,6 +35,10 @@ Route::group(['prefix'=>'contact'], function(){
     Route::post('/store',[ContactController::class, 'store'])->name('contact.store');
     Route::get('/edit/{id}',[ContactController::class, 'edit'])->name('contact.edit');
     Route::put('/{id}/update',[ContactController::class, 'update'])->name('contact.update');
+    Route::delete('/{id}/delete',[ContactController::class, 'destroy'])->name('contact.delete');
+
+    // search functionality route 
+    Route::get('/search',[ContactController::class, 'search'])->name('contact.search');
 })->middleware(Authenticate::class);
 
 
